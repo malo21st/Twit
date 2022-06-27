@@ -27,6 +27,6 @@ st.dataframe(df)
 tweet_idx = st.radio("✅ ツイート選択 :", df.index, horizontal=True)
 init_tweet = f"{df.loc[tweet_idx, 'title']}\n{df.loc[tweet_idx, 'text']}\n\n{df.loc[tweet_idx, 'tag']}"
 st.code(init_tweet, language="txt")
-tweet = init_tweet.replace("\n", "%0A").replace(" ", "%20").replace("#", "%23")
+tweet = init_tweet.replace("\n", "%0A").replace(" ", "%20").replace("#", "%23").replace("　","%E3%80%80")
 link = f'[これをベースにツイート](https://twitter.com/intent/tweet?text={tweet})'
 st.markdown(link, unsafe_allow_html=True)
