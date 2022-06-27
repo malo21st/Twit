@@ -33,6 +33,6 @@ init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[ms
 html_msg = f"{df.loc[msg_idx, 'title']}%0A{df.loc[msg_idx, 'text']}%0A%0A{df.loc[msg_idx, 'tag']}"
 st.write("📋 下のエリアを選択すると右上のアイコンでコピーできます :")
 message = st.text_area("📝 ツイート :", value=init_msg, height=200)
-# msg_html = message.replace("\n", "%0A")
-link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={html_msg})'
+msg_html = html_msg.replace("\n", "%0A")
+link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={msg_html})'
 st.markdown(link, unsafe_allow_html=True)
