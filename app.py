@@ -2,6 +2,7 @@ import streamlit as st
 from google.oauth2 import service_account
 from gsheetsdb import connect
 import pandas as pd
+import html
 
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
@@ -32,7 +33,6 @@ msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizont
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
 st.write("📋 下のエリアを選択すると右上のアイコンでコピーできます :")
 message = st.text_area("📝 ツイート :", value=init_msg, height=200)
-link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={message})'
+msg_html = html.escape(message, quote=True)
+link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={msg_html})'
 st.markdown(link, unsafe_allow_html=True)
-link1 = '[GitHub](http://github.com)'
-st.markdown(link1, unsafe_allow_html=True)
