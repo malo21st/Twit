@@ -24,13 +24,10 @@ df = pd.DataFrame(rows, columns=["title", "text", "tag"])
 df_index = df.index
 
 # Print results.
-st.title("Twitample")
-    
+st.title("Tweet Template")
 st.dataframe(df)
-
 msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
-st.write("📋 下のエリアを選択すると右上のアイコンでコピーできます :")
 message = st.text_area("📝 ツイート :", value=init_msg, height=200)
 msg_html = message.replace("\n", "%0A")
 msg_html = msg_html.replace(" ", "%20")
