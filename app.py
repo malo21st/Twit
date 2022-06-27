@@ -34,5 +34,6 @@ st.write("📋 下のエリアを選択すると右上のアイコンでコピ�
 message = st.text_area("📝 ツイート :", value=init_msg, height=200)
 msg_html = message.replace("\n", "%0A")
 msg_html = msg_html.replace(" ", "%20")
+msg_html = msg_html.replace("#", "%23")
 link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={msg_html})'
 st.markdown(link, unsafe_allow_html=True)
