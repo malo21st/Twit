@@ -28,8 +28,9 @@ st.title("Tweet Template")
 st.dataframe(df)
 msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
-message = st.text_area("📝 ツイート :", value=init_msg, height=200)
-msg_html = message.replace("\n", "%0A")
+st.write("📝 ツイート :")
+st.text_area(init_msg)
+msg_html = init_msg.replace("\n", "%0A")
 msg_html = msg_html.replace(" ", "%20")
 msg_html = msg_html.replace("#", "%23")
 link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={msg_html})'
