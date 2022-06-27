@@ -34,5 +34,5 @@ init_msg = f"{df.loc[msg_idx, 'title']}{df.loc[msg_idx, 'text']}{df.loc[msg_idx,
 st.write("📋 下のエリアを選択すると右上のアイコンでコピーできます :")
 message = st.text_area("📝 ツイート :", value=init_msg, height=200)
 msg_html = html.escape(message, quote=True)
-link = '[この内容でツイートする](https://twitter.com/intent/tweet?text=' + msg_thml + ')'
+link = '[この内容でツイートする](https://twitter.com/intent/tweet?text=' + msg_html + ')'
 st.markdown(link, unsafe_allow_html=True)
