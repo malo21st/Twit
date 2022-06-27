@@ -31,4 +31,4 @@ st.dataframe(df)
 msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
 st.write("📋 下のエリアを選択すると右上のアイコンでコピーできます :")
-message = st.code(init_msg)
+message = st.code(init_msg, language="txt")
