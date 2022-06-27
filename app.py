@@ -33,6 +33,6 @@ msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizont
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
 st.write("📋 下のエリアを選択すると右上のアイコンでコピーできます :")
 message = st.text_area("📝 ツイート :", value=init_msg, height=200)
-msg_html = html.escape(message, quote=False)
-link = '[この内容でツイートする](https://twitter.com/intent/tweet?text=' + msg_html + ')'
+msg_html = html.unescape(message)
+link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={msg_html})'
 st.markdown(link, unsafe_allow_html=True)
