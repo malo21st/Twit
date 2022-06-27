@@ -30,7 +30,7 @@ st.title("Twitample")
 st.dataframe(df)
 
 msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizontal=True)
-init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
+init_msg = f"{df.loc[msg_idx, 'title']}<br>{df.loc[msg_idx, 'text']}<br><br>{df.loc[msg_idx, 'tag']}"
 st.write("📋 下のエリアを選択すると右上のアイコンでコピーできます :")
 message = st.text_area("📝 ツイート :", value=init_msg, height=200)
 msg_html = html.escape(message, quote=True)
