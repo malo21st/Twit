@@ -3,7 +3,6 @@ from google.oauth2 import service_account
 from gsheetsdb import connect
 import pandas as pd
 
-# Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
     scopes=[
@@ -21,16 +20,13 @@ def run_query(query):
 sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 df = pd.DataFrame(rows, columns=["title", "text", "tag"])
-df_index = df.index
 
-# Print results.
+# Contents
 st.title("Tweet Template")
 st.dataframe(df)
-msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizontal=True)
-init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
-st.code(init_msg, language="txt")
-msg_html = init_msg.replace("\n", "%0A")
-msg_html = msg_html.replace(" ", "%20")
-msg_html = msg_html.replace("#", "%23")
-link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={msg_html})'
+tweet_idx = st.radio("✅ ツイートを選んで下さい :", df.index, horizontal=True)
+init_tweet = f"{df.loc[tweet_idx, 'title']}\n{df.loc[tweet_idx, 'text']}\n\n{df.loc[tweet_idx, 'tag']}"
+st.code(init_tweet, language="txt")
+tweet = init_tweet.replace("\n", "%0A").replace(" ", "%20").replace("#", "%23")
+link = f'[この内容でツイートする](https://twitter.com/intent/tweet?text={tweet})'
 st.markdown(link, unsafe_allow_html=True)
