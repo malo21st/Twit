@@ -29,7 +29,7 @@ st.dataframe(df)
 msg_idx = st.radio("✅ ツイートを選んで下さい :", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
 st.write("📝 ツイート :")
-st.text_area(init_msg)
+st.info(init_msg)
 msg_html = init_msg.replace("\n", "%0A")
 msg_html = msg_html.replace(" ", "%20")
 msg_html = msg_html.replace("#", "%23")
