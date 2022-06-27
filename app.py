@@ -23,7 +23,7 @@ df = pd.DataFrame(rows, columns=["title", "text", "tag"])
 
 # Contents
 st.title("Tweet Template")
-st.dataframe(df, width=150)
+st.dataframe(df)
 tweet_idx = st.radio("✅ ツイートを選んで下さい :", df.index, horizontal=True)
 init_tweet = f"{df.loc[tweet_idx, 'title']}\n{df.loc[tweet_idx, 'text']}\n\n{df.loc[tweet_idx, 'tag']}"
 st.code(init_tweet, language="txt")
