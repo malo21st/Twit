@@ -31,8 +31,8 @@ tweet = init_tweet.replace("\n", "%0A").replace(" ", "%20").replace("#", "%23").
 link = f'[これをベースにツイート](https://twitter.com/intent/tweet?text={tweet})'
 st.markdown(link, unsafe_allow_html=True)
 st.components.v1.html(
-    <a class="twitter-share-button"
-      href="https://twitter.com/intent/tweet?text=Hello%20world"
-      data-size="large">
-    Tweet</a>
+<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world"
+  data-size="large">
+Tweet</a>
 )
